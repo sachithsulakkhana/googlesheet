@@ -1,0 +1,21 @@
+function onEdit(e){
+
+addTimeStamp(e)
+
+}
+function addTimeStamp(e)
+{
+
+const rangeModified = e.range
+
+console.log("A1 notation", rangeModified.getA1Notation()) 
+console.log("sheet name", rangeModified.getSheet().getSheetName()) 
+console.log("column number", rangeModified.getColumn())
+console.log("row number", rangeModified.getRow())
+
+if(rangeModified.getColumn() < 10 && rangeModified.getColumn() > 14) return
+{
+  rangeModified.offset(0,17).setValue(Utilities.formatDate(new Date(), "GMT+5:30", "MM/dd/yyyy hh:mm:ss"))
+
+}
+}
