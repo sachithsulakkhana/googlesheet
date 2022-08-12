@@ -1,0 +1,21 @@
+function onEdit(e){
+
+addTimeStamp(e)
+
+}
+function addTimeStamp(e)
+{
+
+const rangeModified = e.range
+var s = SpreadsheetApp.getActiveSheet();
+  if( s.getName() == "mysheet" )
+console.log("A1 notation", rangeModified.getA1Notation()) 
+console.log("sheet name", rangeModified.getSheet().getSheetName()) 
+console.log("column number", rangeModified.getColumn())
+console.log("row number", rangeModified.getRow())
+
+if(rangeModified.getColumn() < 10 || rangeModified.getColumn() > 14) return
+if(rangeModified.getSheet().getSheetName()!=="Sheet1") return
+  rangeModified.getSheet().getRange(rangeModified.getRow(),27).setValue(Utilities.formatDate(new Date(), "GMT+5:30", "MM/dd/yyyy hh:mm:ss"))
+
+}
